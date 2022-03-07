@@ -1,0 +1,128 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(61, 60, 60);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10rem;
+  font-family: monospace;
+  letter-spacing: 1.5px;
+}
+
+.typewriter {
+  color: orange;
+  /* animation shorthand */
+  /* animation: typing 5s steps(22) 1, blink 1s 5; */
+  animation-name: typing, blink;
+  animation-duration: 3s, 1s;
+  animation-iteration-count: 1, 3;
+  animation-timing-function: steps(22);
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid transparent;
+}
+
+.line2 {
+  animation-delay: 3s;
+  animation-fill-mode: backwards;
+  animation-iteration-count: 1, infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: orange;
+  }
+}
+
+/* light/dark mode */
+
+.white-screen {
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  opacity: 0%;
+}
+
+input,
+.container {
+  z-index: 1;
+}
+
+input {
+  margin-bottom: 3rem;
+}
+
+input:checked ~ .white-screen {
+  opacity: 100%;
+}
+
+input:checked ~ .container > .typewriter {
+  color: black;
+}
+
+/* toggle switch style */
+
+.toggle {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 62px;
+  height: 32px;
+  display: inline-block;
+  position: relative;
+  border-radius: 50px;
+  overflow: hidden;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background-color: #707070;
+  transition: background-color ease 0.3s;
+}
+
+.toggle:before {
+  content: "on off";
+  display: block;
+  position: absolute;
+  z-index: 2;
+  width: 28px;
+  height: 28px;
+  background: #fff;
+  left: 2px;
+  top: 2px;
+  border-radius: 50%;
+  font: 10px/28px Helvetica;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-indent: -22px;
+  word-spacing: 37px;
+  color: #fff;
+  text-shadow: -1px -1px rgba(0, 0, 0, 0.15);
+  white-space: nowrap;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  transition: all cubic-bezier(0.3, 1.5, 0.7, 1) 0.3s;
+}
+
+.toggle:checked {
+  background-color: #4cd964;
+}
+
+.toggle:checked:before {
+  left: 32px;
+}
